@@ -1,0 +1,29 @@
+﻿
+
+<div class="row">
+    <h4>Cadastro de Restaurante</h4>
+</div>
+
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">Dados</div>
+        <div class="panel-body">
+            <form materialize [formGroup]="form" (ngSubmit)="save()">
+                <div class="form-group">
+                    <label for="nome"
+                           [class.active]="restaurante.nome"
+                           data-error="Nome é obrigátorio e deve conter no minimo 3 digitos">
+                        Nome
+                    </label>
+                    <input id="nome" type="text" class="form-control"
+                           [(ngModel)]="restaurante.nome" formControlName="nome"
+                           [class.invalid]="form.controls['nome'].touched && !form.controls['nome'].valid">
+                </div>
+
+                <a class="btn btn-danger" routerLink="/restaurantes">Cancelar</a>
+                <button type="submit" class="btn btn-success" [disabled]="!form.valid">Salvar</button>
+            </form>
+        </div>
+    </div>
+</div>
+

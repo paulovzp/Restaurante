@@ -1,0 +1,56 @@
+﻿<div class="col-md-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">Filtros</div>
+        <div class="panel-body">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="nome">
+                    Nome
+                    </label>
+                    <input id="nome" type="text" class="form-control"  [(ngModel)]="nomePesquisa">
+                </div>
+            </div>
+            <div class="col-md-12">
+                    <button type="button"  (click)="pesquisar()" class="btn btn-primary">Filtrar</button>
+                <a class="btn btn-primary"
+                   routerLink="/restaurantes/new">
+                    <i class="">Cadastrar novo Restaurante</i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12">
+    <table class="table table-bordered table-hover table-condensed table-striped">
+        <thead>
+            <tr>
+                <th data-field="" width="3%"></th>
+                <th data-field="" width="3%"></th>
+                <th data-field="" width="94%">Nome</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let restaurante of restaurantes">
+                <td align="center">
+                    <p>
+                        <a [routerLink]="['/restaurantes', restaurante.id]" class="btn btn-link">
+                            <i class="glyphicon glyphicon-pencil"></i>
+                        </a>
+                    </p>
+                </td>
+                <td align="center">
+                    <p style="align-content:center;">
+                        <button (click)="deleteRestaurante(restaurante)" class="btn btn-link">
+                            <i class="glyphicon glyphicon-remove" style="color:red;"></i>
+                        </button>
+                    </p>
+                </td>
+                <td>{{ restaurante.nome }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

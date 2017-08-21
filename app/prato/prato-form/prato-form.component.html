@@ -1,0 +1,48 @@
+﻿
+
+<div class="row">
+    <h4>Cadastro de Prato</h4>
+</div>
+
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">Dados</div>
+        <div class="panel-body">
+            <form materialize [formGroup]="form" (ngSubmit)="save()">
+                <div class="form-group">
+                    <label for="restauranteId">
+                        Restaurante
+                    </label>
+                    <select class="form-control" [(ngModel)]="restauranteIdSelected" formControlName="restauranteIdSelected" (input)="onInput($event)">
+                        <option *ngFor="let resta of listaRestaurantes"  [ngValue]="resta.id">{{resta.nome}}</option>
+                    </select> 
+                </div>
+
+                <div class="form-group">
+                    <label for="nome"
+                           [class.active]="prato.nome"
+                           data-error="Nome é obrigátorio e deve conter no minimo 3 digitos">
+                        Nome
+                    </label>
+                    <input id="nome" type="text" class="form-control"
+                           [(ngModel)]="prato.nome" formControlName="nome"
+                           [class.invalid]="form.controls['nome'].touched && !form.controls['nome'].valid">
+                </div>
+
+                <div class="form-group">
+                    <label for="preco"
+                           [class.active]="prato.preco">
+                        Preço
+                    </label>
+                    <input id="preco" type="text" class="form-control"
+                           [(ngModel)]="prato.preco" formControlName="preco"
+                           [class.invalid]="form.controls['preco'].touched && !form.controls['preco'].valid">
+                </div>
+                
+                <a class="btn btn-danger" routerLink="/pratos">Cancelar</a>
+                <button type="submit" class="btn btn-success" [disabled]="!form.valid">Salvar</button>
+            </form>
+        </div>
+    </div>
+</div>
+

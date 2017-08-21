@@ -1,0 +1,49 @@
+﻿<div class="col-md-12">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="col-lg-12">
+                <a class="btn btn-primary"
+                   routerLink="/pratos/new">
+                    <i class="">Cadastrar novo Prato</i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12">
+    <table class="table table-bordered table-hover table-condensed table-striped">
+        <thead>
+            <tr>
+                <th data-field="" width="3%"></th>
+                <th data-field="" width="3%"></th>
+                <th data-field="" width="40%">Nome</th>
+                <th data-field="" width="40%">Restaurante</th>
+                <th data-field="" width="14%">Preço</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let prato of pratos">
+                <td align="center">
+                    <p>
+                        <a [routerLink]="['/pratos', prato.id]" class="btn btn-link">
+                            <i class="glyphicon glyphicon-pencil"></i>
+                        </a>
+                    </p>
+                </td>
+                <td align="center">
+                    <p style="align-content:center;">
+                        <button (click)="deletePrato(prato)" class="btn btn-link">
+                            <i class="glyphicon glyphicon-remove" style="color:red;"></i>
+                        </button>
+                    </p>
+                </td>
+                <td>{{ prato.nome }}</td>
+                <td>{{ prato.restaurante.nome }}</td>
+                <td>{{ prato.preco | currency:'BRL':true }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
